@@ -1,9 +1,6 @@
 var allContent = $('body');
 
 let overlay = '<div id="quake-overlay-zzz"><button type="button" id="close-overlay">close</button></div>';
-let overlayButton = '<button type="button" id="close-overlay">close</button>';
-
-$('#quake-overlay-zzz').append(overlayButton);
 
 allContent.prepend(overlay);
 
@@ -22,12 +19,14 @@ function fetchGeo() {
             // console.log(myJson);
             if (recentGeo === undefined) {
                 recentGeo = myJson.features[0];
-                $('#overlay').append('HI');
+                buildInfo(recentGeo);
+                console.log(recentGeo.properties.mag)
+                //$('#quake-overlay-zzz').append('HI');
                 overFade();
                 console.log(recentGeo);
             }
             if (JSON.stringify(myJson.features[0]) === JSON.stringify(recentGeo)) {
-                shakeFunc();
+                // shakeFunc();
                 console.log('nothing to report, madame and/or sir')
             } else {
                 recentGeo = myJson.features[0];                
@@ -40,9 +39,10 @@ function fetchGeo() {
 fetchGeo();
 // setTimeout(fetchGeo, 60000);
 
-// function buildInfo(data) {
-//     put data from recentGeo objec into the aside that will fade in
-// }
+function buildInfo(data) {
+    let mag = data.properties.mag;
+    $('#quake-overlay-zzz').append(`magnitude: ${mag}`);
+}
 
 $('#close-overlay').on('click', function() {
     resetShake();
@@ -61,3 +61,15 @@ function resetShake() {
     console.log('end shake');
 }
 
+function timeConverter(UNIX_timestamp){
+    let a = new Date(UNIX_timestamp);
+    let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    let year = a.getFullYear();
+    let month = months[a.getMonth()];
+    let date = a.getDate();
+    let hour = a.getHours();
+    let min = a.getMinutes();
+    let sec = a.getSeconds();
+    let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+    return time;
+  }  

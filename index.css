@@ -30,6 +30,8 @@
 }
 
 #quake-overlay-zzz {
+  /* position: fixed; */
+
   margin: auto;
   position: absolute;
   display: none;
