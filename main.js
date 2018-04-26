@@ -34,9 +34,14 @@ function fetchGeo() {
 fetchGeo();
 // setTimeout(fetchGeo, 60000);
 
-function buildInfo(data) {
-    let info = 
-}
+// function buildInfo(data) {
+//     put data from recentGeo objec into the aside that will fade in
+// }
+
+$(button).onclick(function() {
+    resetShake();
+    $('aside').css('display', 'none');
+});
 
 function shakeFunc() {
     $('div').addClass('play');
