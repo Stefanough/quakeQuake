@@ -26,7 +26,7 @@ function fetchGeo() {
                 console.log(recentGeo);
             }
             if (JSON.stringify(myJson.features[0]) === JSON.stringify(recentGeo)) {
-                // shakeFunc();
+                shakeFunc();
                 console.log('nothing to report, madame and/or sir')
             } else {
                 recentGeo = myJson.features[0];                
@@ -40,8 +40,13 @@ fetchGeo();
 // setTimeout(fetchGeo, 60000);
 
 function buildInfo(data) {
-    let mag = data.properties.mag;
+    let mag = `<div>${data.properties.mag}</div>`;
+    let time = timeConverter(data.properties.time);
+    let place = data.properties.place;
     $('#quake-overlay-zzz').append(`magnitude: ${mag}`);
+    $('#quake-overlay-zzz').append(`time: ${time}`);
+    $('#quake-overlay-zzz').append(`location: ${place}`);
+
 }
 
 $('#close-overlay').on('click', function() {
