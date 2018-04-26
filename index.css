@@ -1,14 +1,21 @@
 
 
+/* div:hover {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+} */
 
-
-
-
-
-div:hover {
+.play {
   animation: shake 0.5s;
   animation-iteration-count: infinite;
 }
+
+.paused { 
+  animation-iteration-count: 0;
+  animation: shake 0;
+}
+
+
 
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
@@ -22,4 +29,23 @@ div:hover {
   80% { transform: translate(-1px, -1px) rotate(1deg); }
   90% { transform: translate(1px, 2px) rotate(0deg); }
   100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+
+#overlay {
+  display: none;
+  position: fixed;
+  font-size: 50px;
+
+  /* top: 50%; */
+  /* left: 50%; */
+  margin: auto;
+  width: 500px;
+  height: 100px;
+  background-color: #fff;
+  /* filter:alpha(opacity=50); */
+  /* -moz-opacity:0.5; */
+  /* -khtml-opacity: 0.5; */
+  /* opacity: 0.5; */
+  z-index: 10000;
 }
