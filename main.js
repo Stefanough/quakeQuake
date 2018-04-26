@@ -1,9 +1,14 @@
 var allContent = $('body');
 
-allContent.prepend('<aside id="overlay"></aside>')
+let overlay = '<div id="quake-overlay-zzz"><button type="button" id="close-overlay">close</button></div>';
+let overlayButton = '<button type="button" id="close-overlay">close</button>';
+
+$('#quake-overlay-zzz').append(overlayButton);
+
+allContent.prepend(overlay);
 
 function overFade() {
-    setTimeout(function(){ $('#overlay').fadeIn(1000); }, 3000);
+    setTimeout(function(){ $('#quake-overlay-zzz').fadeIn(1000); }, 3000);
 }
 
 let recentGeo;
@@ -17,7 +22,7 @@ function fetchGeo() {
             // console.log(myJson);
             if (recentGeo === undefined) {
                 recentGeo = myJson.features[0];
-                $('#overlay').append = 'HI';
+                $('#overlay').append('HI');
                 overFade();
                 console.log(recentGeo);
             }
@@ -27,6 +32,7 @@ function fetchGeo() {
             } else {
                 recentGeo = myJson.features[0];                
                 shakeFunc();
+                console.log(recentGeo);
             }
         });    
         setTimeout(fetchGeo, 10000);    
@@ -38,13 +44,13 @@ fetchGeo();
 //     put data from recentGeo objec into the aside that will fade in
 // }
 
-$(button).onclick(function() {
+$('#close-overlay').on('click', function() {
     resetShake();
-    $('aside').css('display', 'none');
+    $('#quake-overlay-zzz').css('display', 'none');
 });
 
 function shakeFunc() {
-    $('div').addClass('play');
+    $('div').not('#quake-overlay-zzz').addClass('play');
     console.log('start shake');
     setTimeout(resetShake, 10000);
 }
