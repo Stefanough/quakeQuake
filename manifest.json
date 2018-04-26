@@ -1,12 +1,12 @@
 {
-    "manifest_version": 1,
+    "manifest_version": 2,
     "name": "quakeQuake",
     "version": "1.0",
     "description": "Feel the intense energy of seismic events from the safety of your browser.",
     "content_scripts": [
          {
-           "matches": ["*"],
-           "js": ["jquery.min.js", "./main.js"],
+           "matches": ["http://sleepbot.com/ambience/broadcast/*", "https://www.facebook.com/*"],
+           "js": ["jquery.min.js", "./main.js", "index.css"],
            "css": ["index.css"]
          }
    ]  
