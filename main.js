@@ -25,7 +25,7 @@ function fetchGeo() {
             }
             if (JSON.stringify(myJson.features[0]) === JSON.stringify(recentGeo)) {
                 // shakeFunc();
-                console.log('nothing to report, madame and/or sir');
+                console.log('nothing to report');
             } else {
                 recentGeo = myJson.features[0];                
                 shakeFunc();
@@ -54,7 +54,7 @@ $('#close-overlay').on('click', function() {
     $('#quake-overlay-zzz').css('display', 'none');
 });
 
-$('body').on('click', function(e) {
+$('span').on('click', function(e) {
 
         console.log('pressing q', e.keyCode);
         shakeFunc();

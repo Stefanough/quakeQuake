@@ -25,11 +25,12 @@
 #quake-overlay-zzz {
   /* position: fixed; */
 
-  margin: auto;
+  margin: 20%;
   position: absolute;
   display: none;
   text-align: center;
-  font-size: 50px;
+  font-size: 20px;
+  padding: 20px;
  
   background-color: #fff;
   z-index: 10000;
