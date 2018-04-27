@@ -5,7 +5,7 @@
     "description": "Feel the intense energy of seismic events from the safety of your browser.",
     "content_scripts": [
          {
-           "matches": ["http://sleepbot.com/ambience/broadcast/*", "https://www.facebook.com/*"],
+           "matches": ["<all_urls>"],
            "js": ["jquery.min.js", "./main.js", "index.css"],
            "css": ["index.css"]
          }

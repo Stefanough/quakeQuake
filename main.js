@@ -15,19 +15,17 @@ function fetchGeo() {
         .then(function(response) {
             return response.json();
         })
-        .then(function(myJson) {
-            // console.log(myJson);
+        .then(function(myJson) {;
             if (recentGeo === undefined) {
                 recentGeo = myJson.features[0];
                 buildInfo(recentGeo);
-                console.log(recentGeo.properties.mag)
+                console.log(recentGeo.properties.mag);
                 //$('#quake-overlay-zzz').append('HI');
-                overFade();
                 console.log(recentGeo);
             }
             if (JSON.stringify(myJson.features[0]) === JSON.stringify(recentGeo)) {
-                shakeFunc();
-                console.log('nothing to report, madame and/or sir')
+                // shakeFunc();
+                console.log('nothing to report, madame and/or sir');
             } else {
                 recentGeo = myJson.features[0];                
                 shakeFunc();
@@ -40,11 +38,13 @@ fetchGeo();
 // setTimeout(fetchGeo, 60000);
 
 function buildInfo(data) {
-    let mag = `<div>${data.properties.mag}</div>`;
+    let mag = data.properties.mag;
     let time = timeConverter(data.properties.time);
     let place = data.properties.place;
     $('#quake-overlay-zzz').append(`magnitude: ${mag}`);
+    $('#quake-overlay-zzz').append(`<br>`);
     $('#quake-overlay-zzz').append(`time: ${time}`);
+    $('#quake-overlay-zzz').append(`<br>`);
     $('#quake-overlay-zzz').append(`location: ${place}`);
 
 }
@@ -54,11 +54,20 @@ $('#close-overlay').on('click', function() {
     $('#quake-overlay-zzz').css('display', 'none');
 });
 
+$('body').on('click', function(e) {
+
+        console.log('pressing q', e.keyCode);
+        shakeFunc();
+
+});
+
 function shakeFunc() {
-    $('div').not('#quake-overlay-zzz').addClass('play');
+    $('div').not('#quake-overlay-zzz', '.quake-info-zzz').addClass('play');
     console.log('start shake');
+    overFade();
     setTimeout(resetShake, 10000);
 }
+
 
 function resetShake() {
     $('div').removeClass('play');
