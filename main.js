@@ -1,6 +1,6 @@
 var allContent = $('body');
 
-let overlay = '<div id="quake-overlay-zzz"><button type="button" id="close-overlay">close</button></div>';
+let overlay = '<div id="quake-overlay-zzz"><button type="button" id="close-overlay">close</button><br></div>';
 
 allContent.prepend(overlay);
 
